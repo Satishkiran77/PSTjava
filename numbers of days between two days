@@ -1,0 +1,19 @@
+import java.util.*;
+class Solution {
+    public int daysBetweenDates(String date1, String date2) {
+        String[] d1 = date1.split("-");
+        String[] d2 = date2.split("-");
+        Calendar c1 = Calendar.getInstance();
+        Calendar c2 = Calendar.getInstance();
+        c1.set(Integer.parseInt(d1[0]),
+               Integer.parseInt(d1[1]) - 1,
+               Integer.parseInt(d1[2]),
+               0, 0, 0);
+        c2.set(Integer.parseInt(d2[0]),
+               Integer.parseInt(d2[1]) - 1,
+               Integer.parseInt(d2[2]),
+               0, 0, 0);
+        long difference = Math.abs(c1.getTimeInMillis() - c2.getTimeInMillis());
+        return (int)(difference / (1000 * 60 * 60 * 24));
+    }
+}
